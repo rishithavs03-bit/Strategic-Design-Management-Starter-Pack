@@ -1,0 +1,1 @@
+# Strategic-Design-Management-Starter-Pack
