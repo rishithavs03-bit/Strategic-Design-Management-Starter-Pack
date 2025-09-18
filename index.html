@@ -10,7 +10,7 @@
 
 <style>
   :root {
-    
+    --color-bg: #FAFAFA; /* Soft Off-White */
     --color-card-front: #00796B; /* Deep Teal */
     --color-card-back: #E0F2F1; /* Light tealish background for back */
     --color-text-primary: #333333; /* Dark Charcoal */
@@ -20,14 +20,12 @@
     --max-card-width: 480px;
     --card-height: 360px;
     --border-radius: 50px;
-    background: radial-gradient(circle at center, #FAFAFA, #B2E7DF);
   }
 
   html, body {
     height: 100%;
-   
     margin: 0;
-    padding: 48px;
+    padding: 48px 16px 48px 16px;
     font-family: 'Open Sans', sans-serif;
     background: var(--color-bg);
     color: var(--color-text-primary);
@@ -39,15 +37,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
-    
+    gap: 20px;
+    overflow-y: auto;
   }
 
   h1 {
     margin-bottom: 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
   }
 
@@ -55,21 +53,21 @@
     max-width: 600px;
     text-align: center;
     font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.4;
     color: var(--color-text-secondary);
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    padding: 0 10px;
   }
 
   .cards-container {
     display: flex;
-    gap: 24px;
-    padding-bottom: 16px;
-    overflow-x: visible; /* disable horizontal scroll on pills container */
     flex-wrap: nowrap;
-    justify-content: center;
+    gap: 20px;
     width: 100%;
     max-width: 1000px;
+    justify-content: center;
+    padding-bottom: 16px;
   }
 
   .card {
@@ -138,7 +136,7 @@
   .card-front .card-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 1.3;
     width: 200px;
     white-space: nowrap;
@@ -163,8 +161,8 @@
 
   .card-back .card-description {
     font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.4;
     margin-top: calc((var(--card-height) / 2) - 150px);
     padding-right: 24px;
     color: var(--color-text-secondary);
@@ -174,7 +172,7 @@
     position: absolute;
     bottom: 28px;
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -185,7 +183,7 @@
   }
 
   .card-back .reflective-question .icon-question {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   /* Focus outline for accessibility */
@@ -193,131 +191,198 @@
     outline: 3px solid var(--color-secondary-accent);
     outline-offset: 4px;
   }
+
+
+  /* Responsive layout for tablets and phones */
+  @media (max-width: 1024px) {
+    .cards-container {
+      flex-wrap: wrap; /* cards can wrap to multiple rows */
+      gap: 16px;
+      justify-content: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .card {
+      width: 240px !important; /* phones/tablets show medium width */
+      height: auto;
+      min-height: 320px;
+    }
+    .card.expanded {
+      width: 240px !important;
+    }
+    .card-front .card-title {
+      width: 180px;
+      font-size: 1.1rem;
+      white-space: normal;
+    }
+    .card-back .card-description {
+      font-size: 1rem;
+      margin-top: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .cards-container {
+      flex-direction: column; /* stack cards vertically on narrow phones */
+      max-width: 320px;
+      margin: 0 auto;
+      gap: 12px;
+      padding-bottom: 32px;
+    }
+    .card {
+      width: 100% !important;
+      height: auto;
+      min-height: 320px;
+    }
+    .card.expanded {
+      width: 100% !important;
+    }
+    .card-front .card-title {
+      width: 100% !important;
+      font-size: 1rem;
+      white-space: normal;
+    }
+    .card-back .card-description {
+      font-size: 0.95rem;
+      margin-top: 12px;
+      padding-right: 0;
+    }
+  }
 </style>
 </head>
 <body>
-  <h1>Strategic Design Management Starter Pack</h1>
-  <p class="description">
-    Explore the core principles of Strategic Design Management (SDM) through these concise flashcards. Each card highlights a fundamental concept with a simple icon and keyword, followed by a clear explanation and a thoughtful reflective question to connect these ideas to your own work and life. Use this as a guide to deepen your understanding of how SDM fosters innovation, collaboration, and impactful problem solving.
-  </p>
+  <h1>Strategic Design Management Starter Pack</h1>
+  <p class="description">
+    Explore the core principles of Strategic Design Management (SDM) through these concise flashcards. Each card highlights a fundamental concept with a simple icon and keyword, followed by a clear explanation and a thoughtful reflective question to connect these ideas to your own work and life. Use this as a guide to deepen your understanding of how SDM fosters innovation, collaboration, and impactful problem solving.
+  </p>
 
-  <div class="cards-container" role="list" aria-label="Strategic Design Management flashcards">
-    <div class="card" tabindex="0" role="listitem" aria-label="Systems Thinking, Holistic">
-      <div class="card-inner">
-        <div class="card-front">
-          <div class="icon" aria-hidden="true">🕸️</div>
-          <div class="card-title">Contextual</div>
-        </div>
-        <div class="card-back">
-          <div class="card-description">
-            Strategic Design Management understands the problem as a complete system, recognizing how various elements interrelate and influence each other. This perspective helps avoid surface-level solutions by addressing the interconnected nature of challenges.
-          </div>
-          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> How do different parts of a challenge in your daily life affect each other, and what might change if one part is altered?</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="card" tabindex="0" role="listitem" aria-label="Vision Alignment, Vision">
-      <div class="card-inner">
-        <div class="card-front">
-          <div class="icon" aria-hidden="true">🔭</div>
-          <div class="card-title">Vision</div>
-        </div>
-        <div class="card-back">
-          <div class="card-description">
-            A clear and inspiring vision directs all design efforts in SDM, ensuring that choices and strategies align consistently with long-term goals and aspirations for meaningful impact.
-          </div>
-          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> Do your current actions align with your larger personal or professional vision? How might you better connect them?</div>
-        </div>
-      </div>
-    </div>
+  <div class="cards-container" role="list" aria-label="Strategic Design Management flashcards">
+    <div class="card" tabindex="0" role="listitem" aria-label="Systems Thinking, Contextual">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon" aria-hidden="true">🕸️</div>
+          <div class="card-title">Contextual</div>
+        </div>
+        <div class="card-back">
+          <div class="card-description">
+            Strategic Design Management understands the problem as a complete system, recognizing how various elements interrelate and influence each other. This perspective helps avoid surface-level solutions by addressing the interconnected nature of challenges.
+          </div>
+          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> How do different parts of a challenge in your daily life affect each other, and what might change if one part is altered?</div>
+        </div>
+      </div>
+    </div>
 
-    <div class="card" tabindex="0" role="listitem" aria-label="Collaborative Innovation, Collaboration">
-      <div class="card-inner">
-        <div class="card-front">
-          <div class="icon" aria-hidden="true">🤝</div>
-          <div class="card-title">Collaboration</div>
-        </div>
-        <div class="card-back">
-          <div class="card-description">
-            SDM thrives on multidisciplinary teamwork where diverse stakeholders co-create innovative solutions, leveraging varied perspectives to achieve more effective and creative outcomes.
-          </div>
-          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> Who are the people you collaborate with to improve ideas, and how does their diversity enrich your work?</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="card" tabindex="0" role="listitem" aria-label="Problem Framing, Framing">
-      <div class="card-inner">
-        <div class="card-front">
-          <div class="icon" aria-hidden="true">🧩</div>
-          <div class="card-title">Framing</div>
-        </div>
-        <div class="card-back">
-          <div class="card-description">
-            Successful SDM starts by correctly identifying the real problem rather than its symptoms. This involves gathering context, engaging stakeholders, and refining the problem definition to target root causes and maximize impact.
-          </div>
-          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> How do you ensure that you are addressing the core challenge instead of just surface symptoms? What approaches help you frame problems clearly?</div>
-        </div>
-      </div>
-    </div>
+    <div class="card" tabindex="0" role="listitem" aria-label="Vision Alignment, Vision">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon" aria-hidden="true">🔭</div>
+          <div class="card-title">Vision</div>
+        </div>
+        <div class="card-back">
+          <div class="card-description">
+            A clear and inspiring vision directs all design efforts in SDM, ensuring that choices and strategies align consistently with long-term goals and aspirations for meaningful impact.
+          </div>
+          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> Do your current actions align with your larger personal or professional vision? How might you better connect them?</div>
+        </div>
+      </div>
+    </div>
 
-    <div class="card" tabindex="0" role="listitem" aria-label="Innovation Stewardship, Stewardship">
-      <div class="card-inner">
-        <div class="card-front">
-          <div class="icon" aria-hidden="true">⚙️</div>
-          <div class="card-title">Stewardship</div>
-        </div>
-        <div class="card-back">
-          <div class="card-description">
-            SDM nurtures ideas through continuous iteration, testing, and refinement—guiding concepts from inspiration to practical implementation that delivers value.
-          </div>
-          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> How do you maintain focus and support for your ideas from the initial spark through to real-world results?</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="card" tabindex="0" role="listitem" aria-label="Value Creation, Value">
-      <div class="card-inner">
-        <div class="card-front">
-          <div class="icon" aria-hidden="true">⭐</div>
-          <div class="card-title">Value</div>
-        </div>
-        <div class="card-back">
-          <div class="card-description">
-            At its heart, SDM aims to create lasting value that benefits users, organizations, and communities. It moves beyond aesthetics to cultivate solutions with meaningful, measurable impact.
-          </div>
-          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> What meaningful difference does your work or decision-making create around you?</div>
-        </div>
-      </div>
-    </div>
+    <div class="card" tabindex="0" role="listitem" aria-label="Collaborative Innovation, Collaboration">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon" aria-hidden="true">🤝</div>
+          <div class="card-title">Collaboration</div>
+        </div>
+        <div class="card-back">
+          <div class="card-description">
+            SDM thrives on multidisciplinary teamwork where diverse stakeholders co-create innovative solutions, leveraging varied perspectives to achieve more effective and creative outcomes.
+          </div>
+          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> Who are the people you collaborate with to improve ideas, and how does their diversity enrich your work?</div>
+        </div>
+      </div>
+    </div>
 
-  </div>
 
-  <script>
-    const cards = Array.from(document.querySelectorAll('.card'));
+    <div class="card" tabindex="0" role="listitem" aria-label="Problem Framing, Framing">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon" aria-hidden="true">🧩</div>
+          <div class="card-title">Framing</div>
+        </div>
+        <div class="card-back">
+          <div class="card-description">
+            Successful SDM starts by correctly identifying the real problem rather than its symptoms. This involves gathering context, engaging stakeholders, and refining the problem definition to target root causes and maximize impact.
+          </div>
+          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> How do you ensure that you are addressing the core challenge instead of just surface symptoms? What approaches help you frame problems clearly?</div>
+        </div>
+      </div>
+    </div>
 
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        if(card.classList.contains('flipped')){
-          card.classList.remove('flipped', 'expanded');
-        } else {
-          cards.forEach(c => c !== card && c.classList.remove('flipped', 'expanded'));
-          card.classList.add('flipped', 'expanded');
-        }
-      });
-      card.addEventListener('keydown', e => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          if(card.classList.contains('flipped')){
-            card.classList.remove('flipped', 'expanded');
-          } else {
-            cards.forEach(c => c !== card && c.classList.remove('flipped', 'expanded'));
-            card.classList.add('flipped', 'expanded');
-          }
-        }
-      });
-    });
-  </script>
+
+    <div class="card" tabindex="0" role="listitem" aria-label="Innovation Stewardship, Stewardship">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon" aria-hidden="true">⚙️</div>
+          <div class="card-title">Stewardship</div>
+        </div>
+        <div class="card-back">
+          <div class="card-description">
+            SDM nurtures ideas through continuous iteration, testing, and refinement—guiding concepts from inspiration to practical implementation that delivers value.
+          </div>
+          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> How do you maintain focus and support for your ideas from the initial spark through to real-world results?</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" tabindex="0" role="listitem" aria-label="Value Creation, Value">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="icon" aria-hidden="true">⭐</div>
+          <div class="card-title">Value</div>
+        </div>
+        <div class="card-back">
+          <div class="card-description">
+            At its heart, SDM aims to create lasting value that benefits users, organizations, and communities. It moves beyond aesthetics to cultivate solutions with meaningful, measurable impact.
+          </div>
+          <div class="reflective-question"><span class="icon-question" aria-hidden="true">❓</span> What meaningful difference does your work or decision-making create around you?</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    const cards = Array.from(document.querySelectorAll('.card'));
+
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if(card.classList.contains('flipped')){
+          card.classList.remove('flipped', 'expanded');
+        } else {
+          cards.forEach(c => c !== card && c.classList.remove('flipped', 'expanded'));
+          card.classList.add('flipped', 'expanded');
+        }
+      });
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if(card.classList.contains('flipped')){
+            card.classList.remove('flipped', 'expanded');
+          } else {
+            cards.forEach(c => c !== card && c.classList.remove('flipped', 'expanded'));
+            card.classList.add('flipped', 'expanded');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
